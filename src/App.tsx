@@ -1,12 +1,20 @@
 import React, { FC } from 'react';
-import './App.css';
+import styled from '@emotion/styled';
 
-const App: FC = () => {
+import {Cards, Chart, CountryPicker} from './components'
+
+export const App: FC = () => {
   return (
-    <div className='App'>
-      <h1>Covid-19 Stats</h1>
-    </div>
+    <Container>
+      <Cards />
+      <CountryPicker />
+      <Chart />
+    </Container>
   );
 };
 
-export default App;
+const Container = styled.div({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+});
