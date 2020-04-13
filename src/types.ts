@@ -1,6 +1,11 @@
+export interface DetailValue {
+  detail: string
+  value: number
+}
+
 export interface IVirusData {
-    confirmed: number
-    recovered: number
-    deaths: number
-    lastUpdate: string
-  }
+  confirmed: DetailValue
+  recovered: DetailValue
+  deaths: DetailValue
+  lastUpdate: string
+}
