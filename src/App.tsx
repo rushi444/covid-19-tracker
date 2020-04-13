@@ -5,8 +5,6 @@ import { Cards, Chart, CountryPicker } from './components';
 import {IVirusData} from './types'
 import { fetchData } from './api';
 
-
-
 export const App: FC = () => {
   const [virusData, setVirusData] = useState<IVirusData | undefined>();
 
@@ -28,7 +26,10 @@ export const App: FC = () => {
 };
 
 const Container = styled.div({
-  display: 'flex',
+  margin: '0 auto',
+  width: '90%',
+  marginTop: '5%',
+  // display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
 });
