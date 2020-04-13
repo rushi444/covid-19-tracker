@@ -25,11 +25,6 @@ export const Chart: FC = () => {
             pointLabel: 'white',
           },
         },
-        // scale: {
-        //   pointLabels: {
-        //     fontColor: 'white',
-        //   },
-        // },
         scales: {
           pointLabel: {
             fontColor: 'white',
