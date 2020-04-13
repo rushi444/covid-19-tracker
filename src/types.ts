@@ -9,3 +9,8 @@ export interface IVirusData {
   deaths: DetailValue
   lastUpdate: string
 }
+
+export interface IDailyData {
+  [index: number] : any
+  length: number
+}

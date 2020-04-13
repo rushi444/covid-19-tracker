@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { defaultCipherList } from 'constants';
 
 const url = 'https://covid19.mathdro.id/api'
 
@@ -10,3 +11,18 @@ export const fetchData = async () => {
         console.log(error)
     }
 }
+
+export const fetchDailyData = async () => {
+    try {
+        const { data } = await axios.get(`${url}/daily`)
+        const modifiedData = data.map((dailyData: any) => ({
+            confirmed: dailyData.confirmed.total,
+            deaths: dailyData.deaths.total,
+            date: dailyData.reportDate
+        }))
+        return modifiedData
+    } catch (error) {
+        console.log(error)
+    }
+}
+
