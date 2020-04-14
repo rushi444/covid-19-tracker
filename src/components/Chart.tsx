@@ -19,8 +19,6 @@ export const Chart: FC<IProps> = (props) => {
     fetchAPI();
   }, []);
 
-  console.log('props', props);
-
   const lineChart = dailyData.length ? (
     <Line
       options={{

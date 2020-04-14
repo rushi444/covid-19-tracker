@@ -10,7 +10,6 @@ interface IProps {
 }
 
 export const Cards: FC<IProps> = ({ data }) => {
-  console.log(data);
 
   return !data ? (
     <Grid templateColumns='repeat(1, 1fr)'>

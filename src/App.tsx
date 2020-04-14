@@ -18,7 +18,6 @@ export const App: FC = () => {
   }, []);
 
   const handleCountryChange = async (country: string) => {
-    console.log(country);
     const fetchedData = await fetchData(country);
     setCountry(country);
     setVirusData(fetchedData);
