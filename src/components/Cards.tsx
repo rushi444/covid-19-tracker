@@ -17,7 +17,7 @@ export const Cards: FC<IProps> = ({ data }) => {
       <Spinner />
     </Grid>
   ) : (
-    <>
+    <div style={{marginBottom: '30px'}}>
       <LastUpdateDate>
         Last Updated: {new Date(data?.lastUpdate).toDateString()}
       </LastUpdateDate>
@@ -77,7 +77,7 @@ export const Cards: FC<IProps> = ({ data }) => {
           <BoxDef>Number of fatalities from COVID-19</BoxDef>
         </Box>
       </Grid>
-    </>
+    </div>
   );
 };
 

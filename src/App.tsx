@@ -7,7 +7,7 @@ import { fetchData } from './api';
 
 export const App: FC = () => {
   const [virusData, setVirusData] = useState<IVirusData | undefined>();
-  const [country, setCountry] = useState<string>('');
+  const [country, setCountry] = useState<string | any>();
 
   useEffect(() => {
     const runEffect = async () => {
@@ -25,19 +25,20 @@ export const App: FC = () => {
   };
 
   return (
-    <Container>
-      <Cards data={virusData} />
-      <CountryPicker handleCountryChange={handleCountryChange} />
-      <Chart data={virusData} country={country} />
-    </Container>
+    <>
+      <h1 style={{textAlign: 'center'}}>COVID-19 Tracker</h1>
+      <Container style={{ marginTop: 'none' }}>
+        <Cards data={virusData} />
+        <CountryPicker handleCountryChange={handleCountryChange} />
+        <Chart data={virusData} country={country} />
+      </Container>
+    </>
   );
 };
 
 const Container = styled.div({
   margin: '0 auto',
   width: '90%',
-  marginTop: '5%',
-  // display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
 });

@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { NativeSelect, FormControl } from '@material-ui/core';
+import styled from '@emotion/styled';
 
 import { fetchCountries } from '../api';
 import { IFetchedCountries } from '../types';
@@ -19,19 +20,27 @@ export const CountryPicker: FC<IProps> = (props) => {
     };
     fetchCountriesAPI();
   }, [setFetchedCountries]);
-  console.log('render', fetchedCountries);
+
   return (
-    <FormControl>
+    <FormControlStyled>
       <NativeSelect
         defaultValue=''
         onChange={(e) => props.handleCountryChange(e.target.value)}>
-        <option value='global'>Global</option>
+        <option value=''>Global</option>
         {fetchedCountries?.map((country: string, index: number) => (
           <option key={index} value={country}>
             {country}
           </option>
         ))}
       </NativeSelect>
-    </FormControl>
+    </FormControlStyled>
   );
 };
+
+const FormControlStyled = styled(FormControl)({
+  width: '30%',
+  margin: '30px',
+  backgroundColor: 'white',
+  borderRadius: '10px',
+  border: 'none'
+})
