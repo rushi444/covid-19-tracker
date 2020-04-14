@@ -2,19 +2,24 @@ import React, { FC, useState, useEffect } from 'react';
 import { Line, Bar } from 'react-chartjs-2';
 
 import { fetchDailyData } from '../api';
-import { IDailyData } from '../types';
+import { IDailyData, IVirusData } from '../types';
 
-export const Chart: FC = () => {
+interface IProps {
+  data: IVirusData | undefined | any;
+  country: string;
+}
+
+export const Chart: FC<IProps> = (props) => {
   const [dailyData, setDailyData] = useState<IDailyData | any>([]);
-
-  fetchDailyData();
 
   useEffect(() => {
     const fetchAPI = async () => {
       setDailyData(await fetchDailyData());
     };
     fetchAPI();
-  });
+  }, []);
+
+  console.log('props', props);
 
   const lineChart = dailyData.length ? (
     <Line
@@ -72,5 +77,57 @@ export const Chart: FC = () => {
     />
   ) : null;
 
-  return <div>{lineChart}</div>;
+  const barChart = props?.data?.confirmed?.value ? (
+    <Bar
+      data={{
+        labels: ['Infected', 'Recovered', 'Deaths'],
+        datasets: [
+          {
+            label: 'People',
+            backgroundColor: ['yellow', 'green', 'red'],
+            data: [
+              props?.data?.confirmed?.value,
+              props?.data?.recovered?.value,
+              props?.data?.deaths?.value,
+            ],
+          },
+        ],
+      }}
+      options={{
+        legend: { display: false },
+        scales: {
+          pointLabel: {
+            fontColor: 'white',
+          },
+          yAxes: [
+            {
+              ticks: {
+                fontColor: 'white',
+              },
+              gridLines: {
+                color: 'silver',
+              },
+            },
+          ],
+          xAxes: [
+            {
+              ticks: {
+                fontColor: 'white',
+              },
+              gridLines: {
+                color: 'silver',
+              },
+            },
+          ],
+        },
+        title: {
+          display: true,
+          text: `Current state in ${props.country}`,
+          fontColor: 'white',
+        },
+      }}
+    />
+  ) : null;
+
+  return <div>{props?.country ? barChart : lineChart}</div>;
 };

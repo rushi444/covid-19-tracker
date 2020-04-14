@@ -14,3 +14,7 @@ export interface IDailyData {
   [index: number] : any
   length: number
 }
+
+export interface IFetchedCountries {
+  data: []
+}
