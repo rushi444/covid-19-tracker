@@ -16,5 +16,5 @@ export interface IDailyData {
 }
 
 export interface IFetchedCountries {
-  data: []
+  data: string[]
 }

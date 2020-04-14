@@ -5,12 +5,12 @@ import { fetchDailyData } from '../api';
 import { IDailyData, IVirusData } from '../types';
 
 interface IProps {
-  data: IVirusData | undefined | any;
+  data: IVirusData | undefined 
   country: string;
 }
 
 export const Chart: FC<IProps> = (props) => {
-  const [dailyData, setDailyData] = useState<IDailyData | any>([]);
+  const [dailyData, setDailyData] = useState<IDailyData[]>([]);
 
   useEffect(() => {
     const fetchAPI = async () => {
