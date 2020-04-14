@@ -7,7 +7,7 @@ import { fetchData } from './api';
 
 export const App: FC = () => {
   const [virusData, setVirusData] = useState<IVirusData | undefined>();
-  const [country, setCountry] = useState<string | any>();
+  const [country, setCountry] = useState<string>('');
 
   useEffect(() => {
     const runEffect = async () => {

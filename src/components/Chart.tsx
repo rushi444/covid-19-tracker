@@ -5,11 +5,11 @@ import { fetchDailyData } from '../api';
 import { IDailyData, IVirusData } from '../types';
 
 interface IProps {
-  data: IVirusData | undefined 
+  data: IVirusData | undefined;
   country: string;
 }
 
-export const Chart: FC<IProps> = (props) => {
+export const Chart: FC<IProps> = ({ data, country }) => {
   const [dailyData, setDailyData] = useState<IDailyData[]>([]);
 
   useEffect(() => {
@@ -75,7 +75,7 @@ export const Chart: FC<IProps> = (props) => {
     />
   ) : null;
 
-  const barChart = props?.data?.confirmed?.value ? (
+  const barChart = data?.confirmed?.value ? (
     <Bar
       data={{
         labels: ['Infected', 'Recovered', 'Deaths'],
@@ -84,9 +84,9 @@ export const Chart: FC<IProps> = (props) => {
             label: 'People',
             backgroundColor: ['yellow', 'green', 'red'],
             data: [
-              props?.data?.confirmed?.value,
-              props?.data?.recovered?.value,
-              props?.data?.deaths?.value,
+              data?.confirmed?.value,
+              data?.recovered?.value,
+              data?.deaths?.value,
             ],
           },
         ],
@@ -120,12 +120,12 @@ export const Chart: FC<IProps> = (props) => {
         },
         title: {
           display: true,
-          text: `Current state in ${props.country}`,
+          text: `Current state in ${country}`,
           fontColor: 'white',
         },
       }}
     />
   ) : null;
 
-  return <div>{props?.country ? barChart : lineChart}</div>;
+  return <div>{country ? barChart : lineChart}</div>;
 };

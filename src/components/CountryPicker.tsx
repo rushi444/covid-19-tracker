@@ -6,13 +6,13 @@ import { fetchCountries } from '../api';
 import { IFetchedCountries } from '../types';
 
 interface IProps {
-  handleCountryChange: any;
+  handleCountryChange: (country: string) => void;
 }
 
-export const CountryPicker: FC<IProps> = (props) => {
-  const [fetchedCountries, setFetchedCountries] = useState<
-    IFetchedCountries | any
-  >();
+export const CountryPicker: FC<IProps> = ({ handleCountryChange }) => {
+  const [fetchedCountries, setFetchedCountries] = useState<IFetchedCountries>(
+    [],
+  );
 
   useEffect(() => {
     const fetchCountriesAPI = async () => {
@@ -25,7 +25,7 @@ export const CountryPicker: FC<IProps> = (props) => {
     <FormControlStyled>
       <NativeSelect
         defaultValue=''
-        onChange={(e) => props.handleCountryChange(e.target.value)}>
+        onChange={(e) => handleCountryChange(e.target.value)}>
         <option value=''>Global</option>
         {fetchedCountries?.map((country: string, index: number) => (
           <option key={index} value={country}>
@@ -42,5 +42,5 @@ const FormControlStyled = styled(FormControl)({
   margin: '30px',
   backgroundColor: 'white',
   borderRadius: '10px',
-  border: 'none'
-})
+  border: 'none',
+});

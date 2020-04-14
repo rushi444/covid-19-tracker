@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import { CountryType } from '../types'
+
 const url = 'https://covid19.mathdro.id/api'
 
 export const fetchData = async (country?: string) => {
@@ -32,7 +34,7 @@ export const fetchDailyData = async () => {
 export const fetchCountries = async () => {
     try {
         const { data: { countries } } = await axios.get(`${url}/countries`)
-        return countries.map((country: any) => country.name)
+        return countries.map((country: CountryType) => country.name)
     } catch (error) {
         console.log(error)
     }

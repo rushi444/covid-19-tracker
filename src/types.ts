@@ -10,11 +10,21 @@ export interface IVirusData {
   lastUpdate: string
 }
 
+interface ICountryDetails {
+  confirmed: number
+  deaths: number
+  date: string
+}
+
 export interface IDailyData {
-  [index: number] : any
+  [index: number]: ICountryDetails
   length: number
 }
 
-export interface IFetchedCountries {
-  data: string[]
+export type IFetchedCountries = string[]
+
+export interface CountryType {
+  name: string
+  iso2: string
+  iso3: string
 }

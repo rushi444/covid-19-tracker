@@ -6,7 +6,7 @@ import styled from '@emotion/styled';
 import { IVirusData } from '../types';
 
 interface IProps {
-  data: IVirusData | undefined | any;
+  data: IVirusData | undefined;
 }
 
 export const Cards: FC<IProps> = ({ data }) => {
