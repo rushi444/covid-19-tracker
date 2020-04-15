@@ -1,5 +1,6 @@
 import React, { FC, useState, useEffect } from 'react';
 import styled from '@emotion/styled';
+import { isMobile } from 'react-device-detect'
 
 import { Cards, Chart, CountryPicker } from './components';
 import { IVirusData } from './types';
@@ -30,6 +31,7 @@ export const App: FC = () => {
         <Cards data={virusData} />
         <CountryPicker handleCountryChange={handleCountryChange} />
         <Chart data={virusData} country={country} />
+        {isMobile && (<p>Please use landscape mode for chart on mobile</p>)}
       </Container>
     </>
   );

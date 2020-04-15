@@ -3,7 +3,6 @@ import { Line, Bar } from 'react-chartjs-2';
 
 import { fetchDailyData } from '../api';
 import { IDailyData, IVirusData } from '../types';
-import { isMobile } from 'react-device-detect';
 
 interface IProps {
   data: IVirusData | undefined;
