@@ -10,13 +10,12 @@ interface IProps {
 }
 
 export const Cards: FC<IProps> = ({ data }) => {
-
   return !data ? (
     <Grid templateColumns='repeat(1, 1fr)'>
       <Spinner />
     </Grid>
   ) : (
-    <div style={{marginBottom: '30px'}}>
+    <div style={{ marginBottom: '30px' }}>
       <LastUpdateDate>
         Last Updated: {new Date(data?.lastUpdate).toDateString()}
       </LastUpdateDate>
@@ -80,18 +79,18 @@ export const Cards: FC<IProps> = ({ data }) => {
   );
 };
 
-const BoxTitle = styled.h1({
-  textAlign: 'center',
-});
+const BoxTitle = styled.h1`
+  text-align: center;
+`;
 
-const BoxData = styled.h2({
-  textAlign: 'center',
-});
+const BoxData = styled.h2`
+  text-align: center;
+`;
 
-const LastUpdateDate = styled.h2({
-  textAlign: 'center',
-});
+const LastUpdateDate = styled.h2`
+  text-align: center;
+`;
 
-const BoxDef = styled.h4({
-  textAlign: 'center',
-});
+const BoxDef = styled.h4`
+  text-align: center;
+`;

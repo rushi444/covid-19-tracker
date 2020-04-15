@@ -23,7 +23,7 @@ export const CountryPicker: FC<IProps> = ({ handleCountryChange }) => {
 
   return (
     <FormControlStyled>
-      <NativeSelect
+      <NativeSelectStyled
         defaultValue=''
         onChange={(e) => handleCountryChange(e.target.value)}>
         <option value=''>Global</option>
@@ -32,15 +32,22 @@ export const CountryPicker: FC<IProps> = ({ handleCountryChange }) => {
             {country}
           </option>
         ))}
-      </NativeSelect>
+      </NativeSelectStyled>
     </FormControlStyled>
   );
 };
 
-const FormControlStyled = styled(FormControl)({
-  width: '30%',
-  margin: '30px',
-  backgroundColor: 'white',
-  borderRadius: '10px',
-  border: 'none',
-});
+const FormControlStyled = styled(FormControl)`
+  width: 30%;
+  margin: 30px;
+  background-color: white;
+  border-radius: 10px;
+  border: none;
+`;
+
+const NativeSelectStyled = styled(NativeSelect)`
+  padding: 1%;
+  option {
+    padding: 1%;
+  }
+`;

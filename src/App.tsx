@@ -25,7 +25,7 @@ export const App: FC = () => {
 
   return (
     <>
-      <h1 style={{textAlign: 'center'}}>COVID-19 Tracker</h1>
+      <h1 style={{ textAlign: 'center', fontSize: '3rem' }}>COVID-19 Tracker</h1>
       <Container style={{ marginTop: 'none' }}>
         <Cards data={virusData} />
         <CountryPicker handleCountryChange={handleCountryChange} />
@@ -35,9 +35,7 @@ export const App: FC = () => {
   );
 };
 
-const Container = styled.div({
-  margin: '0 auto',
-  width: '90%',
-  alignItems: 'center',
-  justifyContent: 'center',
-});
+const Container = styled.div`
+  margin: 0 auto;
+  width: 80%;
+`;
