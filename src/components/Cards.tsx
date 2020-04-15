@@ -19,7 +19,7 @@ export const Cards: FC<IProps> = ({ data }) => {
       <LastUpdateDate>
         Last Updated: {new Date(data?.lastUpdate).toDateString()}
       </LastUpdateDate>
-      <Grid templateColumns='repeat(3, 1fr)' gap={6}>
+      <GridStyled templateColumns='repeat(3, 1fr)' gap={6}>
         <Box
           w='100%'
           h='100%'
@@ -74,10 +74,18 @@ export const Cards: FC<IProps> = ({ data }) => {
           </BoxData>
           <BoxDef>Number of fatalities from COVID-19</BoxDef>
         </Box>
-      </Grid>
+      </GridStyled>
     </div>
   );
 };
+
+const GridStyled = styled(Grid)`
+  @media (max-width: 1000px) {
+    grid-template-columns: repeat(1, 1fr);
+    grid-row-gap: 2%;
+    margin-bottom: 7%;
+  }
+`;
 
 const BoxTitle = styled.h1`
   text-align: center;

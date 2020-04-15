@@ -43,6 +43,9 @@ const FormControlStyled = styled(FormControl)`
   background-color: white;
   border-radius: 10px;
   border: none;
+  @media (max-width: 1000px) {
+    width: 100%;
+  }
 `;
 
 const NativeSelectStyled = styled(NativeSelect)`
