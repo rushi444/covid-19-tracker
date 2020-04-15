@@ -1,6 +1,6 @@
 import React, { FC, useState, useEffect } from 'react';
 import styled from '@emotion/styled';
-import { isMobile } from 'react-device-detect'
+import { isMobile } from 'react-device-detect';
 
 import { Cards, Chart, CountryPicker } from './components';
 import { IVirusData } from './types';
@@ -26,12 +26,14 @@ export const App: FC = () => {
 
   return (
     <>
-      <h1 style={{ textAlign: 'center', fontSize: '3rem' }}>COVID-19 Tracker</h1>
+      <h1 style={{ textAlign: 'center', fontSize: '3rem' }}>
+        COVID-19 Tracker
+      </h1>
       <Container style={{ marginTop: 'none' }}>
         <Cards data={virusData} />
         <CountryPicker handleCountryChange={handleCountryChange} />
         <Chart data={virusData} country={country} />
-        {isMobile ? (<p>Please use landscape mode for chart on mobile devices</p>) : (<p></p>)}
+        <p></p>
       </Container>
     </>
   );
