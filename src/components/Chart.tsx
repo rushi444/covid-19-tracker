@@ -3,7 +3,7 @@ import { Line, Bar } from 'react-chartjs-2';
 
 import { fetchDailyData } from '../api';
 import { IDailyData, IVirusData } from '../types';
-import { NONAME } from 'dns';
+import { isMobile } from 'react-device-detect';
 
 interface IProps {
   data: IVirusData | undefined;
@@ -37,6 +37,7 @@ export const Chart: FC<IProps> = ({ data, country }) => {
             {
               ticks: {
                 fontColor: 'white',
+                autoSkip: 'true',
               },
               gridLines: {
                 color: 'silver',
@@ -47,6 +48,7 @@ export const Chart: FC<IProps> = ({ data, country }) => {
             {
               ticks: {
                 fontColor: 'white',
+                autoSkip: 'true',
               },
               gridLines: {
                 color: 'silver',
