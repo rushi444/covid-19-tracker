@@ -31,7 +31,7 @@ export const App: FC = () => {
         <Cards data={virusData} />
         <CountryPicker handleCountryChange={handleCountryChange} />
         <Chart data={virusData} country={country} />
-        {isMobile && (<p>Please use landscape mode for chart on mobile</p>)}
+        {isMobile ? (<p>Please use landscape mode for chart on mobile devices</p>) : (<p></p>)}
       </Container>
     </>
   );
