@@ -1,5 +1,6 @@
 import React, { FC, useState, useEffect } from 'react';
 import { Line, Bar } from 'react-chartjs-2';
+import {isMobile} from 'react-device-detect'
 
 import { fetchDailyData } from '../api';
 import { IDailyData, IVirusData } from '../types';
@@ -20,61 +21,65 @@ export const Chart: FC<IProps> = ({ data, country }) => {
   }, []);
 
   const lineChart = dailyData.length ? (
-    <Line
-      options={{
-        legend: {
-          labels: {
-            fontColor: 'white',
-            pointLabel: 'white',
+    <div style={isMobile ? { height: '400px' }: {}}>
+      <Line
+        options={{
+          responsive: true,
+          maintainAspectRatio: isMobile ? false : true,
+          legend: {
+            labels: {
+              fontColor: 'white',
+              pointLabel: 'white',
+            },
           },
-        },
-        scales: {
-          pointLabel: {
-            fontColor: 'white',
+          scales: {
+            pointLabel: {
+              fontColor: 'white',
+            },
+            yAxes: [
+              {
+                ticks: {
+                  fontColor: 'white',
+                  autoSkip: 'true',
+                },
+                gridLines: {
+                  color: 'silver',
+                },
+              },
+            ],
+            xAxes: [
+              {
+                ticks: {
+                  fontColor: 'white',
+                  autoSkip: 'true',
+                },
+                gridLines: {
+                  color: 'silver',
+                },
+              },
+            ],
           },
-          yAxes: [
+        }}
+        data={{
+          labels: dailyData.map(({ date }: any) => date),
+          datasets: [
             {
-              ticks: {
-                fontColor: 'white',
-                autoSkip: 'true',
-              },
-              gridLines: {
-                color: 'silver',
-              },
+              data: dailyData.map(({ confirmed }: any) => confirmed),
+              label: 'Infected',
+              borderColor: '#3333ff',
+              fill: true,
+            },
+            {
+              data: dailyData.map(({ deaths }: any) => deaths),
+              label: 'Deaths',
+              borderColor: 'red',
+              backgroundColor: 'red',
+              fill: true,
             },
           ],
-          xAxes: [
-            {
-              ticks: {
-                fontColor: 'white',
-                autoSkip: 'true',
-              },
-              gridLines: {
-                color: 'silver',
-              },
-            },
-          ],
-        },
-      }}
-      data={{
-        labels: dailyData.map(({ date }: any) => date),
-        datasets: [
-          {
-            data: dailyData.map(({ confirmed }: any) => confirmed),
-            label: 'Infected',
-            borderColor: '#3333ff',
-            fill: true,
-          },
-          {
-            data: dailyData.map(({ deaths }: any) => deaths),
-            label: 'Deaths',
-            borderColor: 'red',
-            backgroundColor: 'red',
-            fill: true,
-          },
-        ],
-      }}
-    />
+        }}
+      />
+    </div>
   ) : null;
 
   const barChart = data?.confirmed?.value ? (
