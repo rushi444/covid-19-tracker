@@ -9,8 +9,10 @@
   - yarn
   - yarn start
  
+## Desktop View
 ![Desktop Version](https://github.com/rushi444/covid-19-tracker/blob/master/public/covid_desktop.jpg)
 
+## Mobile View
 ![Mobile version](https://github.com/rushi444/covid-19-tracker/blob/master/public/covid_mobile.jpg)
 
 
