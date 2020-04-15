@@ -1,6 +1,5 @@
 import React, { FC, useState, useEffect } from 'react';
 import styled from '@emotion/styled';
-import { isMobile } from 'react-device-detect';
 
 import { Cards, Chart, CountryPicker } from './components';
 import { IVirusData } from './types';
