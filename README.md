@@ -1,6 +1,6 @@
 # Covid-19 Tracker
 
-## Built with Typescript / React / Chartjs / Chakra
+## Built with Typescript / React / Chartjs / Chakra-ui 
 
 ### Live Version: https://covid-19-tracker-rushi.netlify.app/
 
